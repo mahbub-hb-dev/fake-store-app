@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import { FiShoppingCart } from "react-icons/fi";
 import Cart from "./Cart";
+import { useCart } from "../context/CartContext";
+
 
 const Header = ({ categories, onCategorySelect, searchValue, setSearchValue }) => {
   const [mobileDropdown, setMobileDropdown] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { cart } = useCart();
 
   // Update isMobile on resize
   useEffect(() => {
@@ -55,9 +58,16 @@ const Header = ({ categories, onCategorySelect, searchValue, setSearchValue }) =
           {/* Cart icon */}
           <button className="relative text-2xl" onClick={() => setCartOpen(true)}>
             <FiShoppingCart />
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+            {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
               0
-            </span>
+            </span> */}
+
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+              {cart.reduce((sum, item) => sum + item.quantity, 0)}
+              </span>
+            )}
+
           </button>
         </div>
       </header>

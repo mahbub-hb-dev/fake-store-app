@@ -7,7 +7,7 @@ const Products = ({ products }) => {
   const [modalProduct, setModalProduct] = React.useState(null);
 
   const handleAddToCart = (product) => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
+    dispatch({type: "ADD_TO_CART", payload: { ...product, quantity: 1 }});
   };
 
   return (
@@ -24,7 +24,7 @@ const Products = ({ products }) => {
               <button className="mt-2 bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700" onClick={() => setModalProduct(product)}> Buy Now </button>
               <button className="mt-2 ml-2 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600" onClick={() => handleAddToCart(product)}> Add to Cart </button>
             </article>
-            
+
           ))
         ) : (<p className="text-center text-gray-500">No products found.</p>)}
       </section>
