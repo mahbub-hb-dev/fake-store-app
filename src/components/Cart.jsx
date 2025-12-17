@@ -55,7 +55,7 @@ const Cart = ({ isOpen, onClose, isMobile }) => {
             cart.map(item => (
               <div
                 key={item.id}
-                className="flex justify-between items-center mb-3 border-b border-gray-300 pb-3"
+                className="flex justify-between items-center mb-2 border-b border-gray-300 pb-3"
               >
                 <div className="flex gap-3 items-center">
                   <img

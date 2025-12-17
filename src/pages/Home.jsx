@@ -42,6 +42,7 @@ const Home = () => {
 
       <main className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {filteredProducts.map((p) => (
+
           <div key={p.id} className="bg-white p-3 rounded shadow">
             <img src={p.images[0]} alt={p.title} className="w-full h-40 object-cover rounded" />
             <h3 className="font-medium mt-2">{p.title}</h3>
@@ -49,6 +50,7 @@ const Home = () => {
             <p className="text-gray-600 text-sm"> {p.description.substring(0, 60)}... </p>
             <button onClick={() => setModalProduct(p)} className="mt-2 bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 w-full"> Buy Now </button>
           </div>
+          
         ))}
       </main>
 

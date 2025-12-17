@@ -5,12 +5,7 @@ import CategoryDropdown from "./CategoryDropdown";
 import Cart from "./Cart";
 import { useCart } from "../context/CartContext";
 
-const Header = ({
-  categories,
-  onCategorySelect,
-  searchValue,
-  setSearchValue,
-}) => {
+const Header = ({ categories, onCategorySelect, searchValue, setSearchValue}) => {
   const { cart } = useCart();
 
   const [mobileDropdown, setMobileDropdown] = useState(false);
@@ -32,7 +27,7 @@ const Header = ({
       window.removeEventListener("resize", handleResize);
   }, []);
 
-  /* 🎯 badge animation trigger */
+  /* badge animation trigger */
   useEffect(() => {
     if (totalItems > 0) {
       setAnimate(true);
