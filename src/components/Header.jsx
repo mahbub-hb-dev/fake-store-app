@@ -26,7 +26,7 @@ const Header = ({
   /* 🖥 resize detect */
   useEffect(() => {
     const handleResize = () =>
-      setIsMobile(window.innerWidth < 768);
+    setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () =>
       window.removeEventListener("resize", handleResize);
@@ -45,36 +45,21 @@ const Header = ({
     <>
       <header className="bg-white shadow-md sticky top-0 z-50 px-4 py-3 flex items-center justify-between gap-2 flex-wrap">
         {/* Logo */}
-        <Link
-          to="/"
-          onClick={() => {
+        <Link to="/" onClick={() => {
             setSearchValue("");
             onCategorySelect("");
           }}
           className="text-xl font-bold text-indigo-600 cursor-pointer"
-        >
-          FakeStore
+        > FakeStore
         </Link>
 
         {/* Search */}
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          className="border rounded px-3 py-1 flex-1 min-w-[150px]"
-        />
+        <input type="text" placeholder="Search products..." value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className="border rounded px-3 py-1 flex-1 min-w-37.5"/>
 
         {/* Desktop Categories */}
         <nav className="hidden md:flex gap-4">
           {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => onCategorySelect(cat)}
-              className="hover:text-indigo-600 font-medium"
-            >
-              {cat}
-            </button>
+            <button key={cat} onClick={() => onCategorySelect(cat)} className="hover:text-indigo-600 font-medium"> {cat} </button>
           ))}
         </nav>
 
@@ -83,14 +68,7 @@ const Header = ({
           {/* Mobile Category Dropdown */}
           {isMobile && (
             <div className="relative">
-              <button
-                onClick={() =>
-                  setMobileDropdown(!mobileDropdown)
-                }
-                className="px-2 py-1 border rounded"
-              >
-                Categories
-              </button>
+              <button onClick={() => setMobileDropdown(!mobileDropdown)} className="px-2 py-1 border rounded"> Categories </button>
 
               {mobileDropdown && (
                 <CategoryDropdown
@@ -105,10 +83,7 @@ const Header = ({
           )}
 
           {/* Cart Icon */}
-          <button
-            className="relative text-2xl"
-            onClick={() => setCartOpen(true)}
-          >
+          <button className="relative text-2xl" onClick={() => setCartOpen(true)}>
             <FiShoppingCart />
 
             {/* Badge */}
@@ -125,11 +100,7 @@ const Header = ({
       </header>
 
       {/* Cart Panel */}
-      <Cart
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-        isMobile={isMobile}
-      />
+      <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} isMobile={isMobile}/>
     </>
   );
 };
