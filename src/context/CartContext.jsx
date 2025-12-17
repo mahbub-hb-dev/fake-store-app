@@ -23,8 +23,24 @@ const cartReducer = (state, action) => {
       return [...state, { ...action.payload }];
     }
 
+    case "INCREASE_QTY":
+      return state.map((item) =>
+        item.id === action.payload
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+
+    case "DECREASE_QTY":
+      return state
+        .map((item) =>
+          item.id === action.payload
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0);
+
     case "REMOVE_FROM_CART":
-      return state.filter((item) => item.id !== action.payload.id);
+      return state.filter((item) => item.id !== action.payload);
 
     case "CLEAR_CART":
       return [];
@@ -35,12 +51,8 @@ const cartReducer = (state, action) => {
 };
 
 const getInitialCart = () => {
-  try {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  } catch {
-    return [];
-  }
+  const saved = localStorage.getItem("cart");
+  return saved ? JSON.parse(saved) : [];
 };
 
 export const CartProvider = ({ children }) => {
@@ -50,7 +62,6 @@ export const CartProvider = ({ children }) => {
     getInitialCart
   );
 
-  // 🔹 Save cart to localStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
