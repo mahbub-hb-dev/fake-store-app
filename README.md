@@ -18,7 +18,7 @@ A fully responsive e-commerce cart system inspired by StarTech, built with React
 - DummyJSON REST API
 
 ## 🌐 Live Demo
-👉 https://your-live-link-here
+👉 https://mhb-fakestore.vercel.app/
 
 ## 📦 Installation
 ```bash

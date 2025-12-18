@@ -37,7 +37,7 @@ const Header = ({ categories, onCategorySelect, searchValue, setSearchValue }) =
 
   return (
     <>
-      <header className="bg-white shadow-md sticky top-0 z-50 px-4 py-3">
+      <header className="bg-white shadow-md sticky top-0 z-50 px-4 py-3 animate-slideDown">
         {/* ===== MAIN FLEX CONTAINER ===== */}
         <div className="flex flex-wrap md:flex-nowrap items-center gap-3">
 
