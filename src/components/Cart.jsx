@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { MdDelete } from "react-icons/md";
 
 const Cart = ({ isOpen, onClose, isMobile }) => {
   const { cart, dispatch } = useCart();
@@ -25,8 +26,8 @@ const Cart = ({ isOpen, onClose, isMobile }) => {
         
         {/* ================= Cart Header ================= */}
         <div className="p-4 flex items-center justify-end text-center border-b border-dashed">
-          <h2 className="font-bold text-lg ml-7 flex-10"> Your Cart </h2>
-          <button onClick={onClose} className="flex-1 text-gray-500 text-xl cursor-pointer"> ✕ </button>
+          <h2 className="font-bold text-blue-600 text-lg ml-7 flex-10"> Your Cart </h2>
+          <button onClick={onClose} className="flex-1 text-gray-500 hover:text-gray-700 text-xl cursor-pointer"> ✕ </button>
         </div>
 
         {/* ================= Cart Body ================= */}
@@ -48,14 +49,14 @@ const Cart = ({ isOpen, onClose, isMobile }) => {
                     {/* Quantity Control */}
                     <div className="flex items-center gap-2 mt-1">
                       <button 
-                        className="px-2 border rounded hover:bg-gray-100 active:bg-gray-200" 
+                        className="px-2 border border-gray-300 bg-gray-50 rounded hover:bg-gray-100 active:bg-gray-200" 
                         onClick={() =>dispatch({ type: "DECREASE_QTY", payload: { id: item.id }})}> &minus; 
                       </button>
 
                       <span>{item.quantity}</span>
 
                       <button 
-                        className="px-2 border rounded hover:bg-gray-100 active:bg-gray-200" 
+                        className="px-2 border border-gray-300 bg-gray-50 rounded hover:bg-gray-100 active:bg-gray-200" 
                         onClick={() => dispatch({type: "INCREASE_QTY", payload: { id: item.id }})}> &#x2B; 
                       </button>
                     </div>
@@ -65,7 +66,7 @@ const Cart = ({ isOpen, onClose, isMobile }) => {
                 {/* Remove */}
                 <button 
                   onClick={() => dispatch({type: "REMOVE_FROM_CART", payload: { id: item.id }})}
-                  className="text-red-500 font-bold border px-2.5 rounded hover:bg-gray-200"> ✕ 
+                  className="text-red-500 hover:text-red-600 text-2xl"> <MdDelete />
                 </button>
               </div>
             ))
